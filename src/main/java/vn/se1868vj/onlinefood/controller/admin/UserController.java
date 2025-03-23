@@ -79,7 +79,7 @@ public class UserController {
 
     @PostMapping(value = "/admin/user/create")
     public String createUserPage(Model model,
-            @ModelAttribute("newUser") @Valid User hoidanit,
+            @ModelAttribute("newUser") @Valid User user,
             BindingResult newUserBindingResult,
             @RequestParam("imageAvatar") MultipartFile file) {
 
@@ -89,13 +89,13 @@ public class UserController {
 
         //
         String avatar = this.uploadService.handleSaveUploadFile(file, "avatar");
-        String hashPassword = this.passwordEncoder.encode(hoidanit.getPassword());
+        String hashPassword = this.passwordEncoder.encode(user.getPassword());
 
-        hoidanit.setAvatar(avatar);
-        hoidanit.setPassword(hashPassword);
-        hoidanit.setRole(this.userService.getRoleByName(hoidanit.getRole().getName()));
+        user.setAvatar(avatar);
+        user.setPassword(hashPassword);
+        user.setRole(this.userService.getRoleByName(user.getRole().getName()));
         // save
-        this.userService.handleSaveUser(hoidanit);
+        this.userService.handleSaveUser(user);
         return "redirect:/admin/user";
     }
 

@@ -47,10 +47,12 @@ public class HomePageController {
     public String getHomePage(Model model) {
         // List<Product> products = this.productService.fetchProducts();
         Pageable pageable = PageRequest.of(0, 10);
-        Page<Product> prs = this.productService.fetchProducts(pageable);
-        List<Product> products = prs.getContent();
-
-        model.addAttribute("products", products);
+        Page<Product> prs1 = this.productService.fetchProducts("DO-AN",true,pageable);
+        Page<Product> prs2 = this.productService.fetchProducts("DO-UONG",true,pageable);
+        List<Product> product1 = prs1.getContent();
+        model.addAttribute("product1", product1);
+        List<Product> product2 = prs2.getContent();
+        model.addAttribute("product2", product2);
         return "client/homepage/show";
     }
 

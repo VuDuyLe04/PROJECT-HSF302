@@ -104,7 +104,7 @@
                                                     <label class="form-label">Target:</label>
                                                     <form:select class="form-select" path="target">
                                                         <form:option value="DO-AN">Đồ ăn</form:option>
-                                                        <form:option value="NUOC-UONG">Nước uống
+                                                        <form:option value="DO-UONG">Nước uống
                                                         </form:option>
                                                     </form:select>
                                                 </div>

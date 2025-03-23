@@ -53,8 +53,11 @@ public class ProductService {
         return this.productRepository.save(pr);
     }
 
+    public Page<Product> fetchProducts(String target,Boolean storage, Pageable page) {
+        return this.productRepository.findByTargetAndStorage(target, storage, page);
+    }
     public Page<Product> fetchProducts(Pageable page) {
-        return this.productRepository.findAll(page);
+        return this.productRepository.findAll( page);
     }
 
     public Page<Product> fetchProductsWithSpec(Pageable page, ProductCriteriaDTO productCriteriaDTO) {

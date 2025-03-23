@@ -11,7 +11,7 @@ import vn.se1868vj.onlinefood.domain.Product;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long>, JpaSpecificationExecutor<Product> {
-    Page<Product> findAll(Pageable page);
+    Page<Product> findByTargetAndStorage(String target, Boolean storage, Pageable pageable);
 
     Page<Product> findAll(Specification<Product> spec, Pageable page);
 }
